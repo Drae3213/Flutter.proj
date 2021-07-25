@@ -4,6 +4,8 @@ import 'package:kicks_for_nerds/constants.dart';
 import 'package:kicks_for_nerds/components/reusable_card.dart';
 import 'package:kicks_for_nerds/components/landing_page_nav.dart';
 import 'package:kicks_for_nerds/components/txt_fonts.dart';
+import 'login_page.dart';
+import 'register_page.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -24,7 +26,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBGClr,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -79,18 +81,26 @@ class _LandingPageState extends State<LandingPage> {
                         setState(
                           () {
                             fontType = font.bold;
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return RegisterPage();
+                                },
+                              ),
+                            );
                           },
                         );
                       },
                       child: ReusableCard(
-                        cardChild: Center(
-                          child: fontType == font.bold
-                              ? BoldTxtFont18(
-                                  text: _regLandingPgTxt,
-                                )
-                              : LightTxtFont18(
-                                  text: _regLandingPgTxt,
-                                ),
+                        cardChild: ToggleBold(
+                          fontType: fontType,
+                          boldTxtFont: BoldTxtFont18(
+                            text: _regLandingPgTxt,
+                          ),
+                          lightTxtFont: LightTxtFont18(
+                            text: _regLandingPgTxt,
+                          ),
                         ),
                         baseColour: kBlackCustomClr,
                         height: kSmallButtonHeight,
@@ -106,5 +116,22 @@ class _LandingPageState extends State<LandingPage> {
         ),
       ),
     );
+  }
+}
+
+class ToggleBold extends StatelessWidget {
+  ToggleBold(
+      {@required this.fontType,
+      @required this.boldTxtFont,
+      @required this.lightTxtFont});
+
+  final font fontType;
+
+  final boldTxtFont;
+  final lightTxtFont;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: fontType == font.bold ? boldTxtFont : lightTxtFont);
   }
 }

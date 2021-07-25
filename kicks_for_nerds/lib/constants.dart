@@ -47,3 +47,9 @@ const kFontColour = Colors.white;
 const kActiveButtonClr = kGradClr;
 
 const kInActiveButtonClr = kBlackCustomClr;
+
+const kLightBGClr = Colors.white;
+
+const kDarkbgClr = kBlackCustomClr;
+
+const kBGClr = kLightBGClr;
