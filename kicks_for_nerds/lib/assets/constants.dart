@@ -14,6 +14,14 @@ const kGradClr = BoxDecoration(
   ),
 );
 
+const kSolidGrad = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [kBlackCustomClr, kBlackCustomClr],
+  ),
+);
+
 const kTopContentMargin = EdgeInsets.only(
   left: 24,
   right: 24,

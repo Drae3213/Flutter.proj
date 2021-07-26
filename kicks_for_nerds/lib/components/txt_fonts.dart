@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kicks_for_nerds/constants.dart';
+import 'package:kicks_for_nerds/assets/constants.dart';
 
 // Bold font classes
 class BoldTxtFont18 extends StatelessWidget {

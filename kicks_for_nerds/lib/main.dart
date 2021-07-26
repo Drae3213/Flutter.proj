@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/screens/landing_page.dart';
+import 'package:kicks_for_nerds/screens/login_page.dart';
+import 'package:kicks_for_nerds/screens/register_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LandingPage(),
+      initialRoute: '/land',
+      routes: {
+        '/land': (context) => LandingPage(),
+        '/reg': (context) => RegisterPage(),
+        '/log': (context) => LoginPage(),
+        // '/load': (context) => ,
+      },
     );
   }
 }

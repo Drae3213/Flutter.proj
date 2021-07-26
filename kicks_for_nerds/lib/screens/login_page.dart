@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kicks_for_nerds/constants.dart';
+import 'package:kicks_for_nerds/assets/constants.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,10 +12,10 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: kBGClr,
       body: SafeArea(
-          // child: Center(
-          //   child: Text('Login Page'),
-          // ),
-          ),
+        child: Center(
+          child: Text('Login Page'),
+        ),
+      ),
     );
   }
 }

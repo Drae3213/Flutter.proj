@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kicks_for_nerds/constants.dart';
+import 'package:kicks_for_nerds/assets/constants.dart';
 
 class ReusableCard extends StatelessWidget {
   ReusableCard(
       {this.height,
       this.width,
-      @required this.baseColour,
+      this.baseColour,
       this.cardChild,
       this.marginSize,
       this.grad});

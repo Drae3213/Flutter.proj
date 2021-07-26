@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kicks_for_nerds/constants.dart';
+import 'package:kicks_for_nerds/assets/constants.dart';
 
 class LandingPageNav extends StatelessWidget {
   LandingPageNav({this.cardChild});
