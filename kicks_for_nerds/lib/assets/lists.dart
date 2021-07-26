@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
-List<Color> gradClr = [
+List<Color> lGradClr = [
   kMagentaClr,
   kPurpleClr,
 ];
-List<Color> solidGrad = [
+List<Color> lSolidGrad = [
   kBlackCustomClr,
   kBlackCustomClr,
 ];

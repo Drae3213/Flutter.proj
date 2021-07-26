@@ -55,7 +55,7 @@ class _SmallButtonState extends State<SmallButton> {
       child: Ink(
         decoration: BoxDecoration(
           gradient:
-              LinearGradient(colors: hasBeenPressed ? gradClr : solidGrad),
+              LinearGradient(colors: hasBeenPressed ? lGradClr : lSolidGrad),
           borderRadius: BorderRadius.circular(kRadiusNumber),
         ),
         child: ReusableCard(
@@ -127,7 +127,7 @@ class _BiggerButtonState extends State<BiggerButton> {
       child: Ink(
         decoration: BoxDecoration(
           gradient:
-              LinearGradient(colors: hasBeenPressed ? gradClr : solidGrad),
+              LinearGradient(colors: hasBeenPressed ? lGradClr : lSolidGrad),
           borderRadius: BorderRadius.circular(kRadiusNumber),
         ),
         child: ReusableCard(
