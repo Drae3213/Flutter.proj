@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 
 // Bold font classes
-class BoldTxtFont18 extends StatelessWidget {
-  BoldTxtFont18({@required this.text});
+class ReusbaleBoldTxtFont extends StatelessWidget {
+  ReusbaleBoldTxtFont({
+    @required this.text,
+    this.fontW8t,
+    @required this.fontsize,
+  });
 
   final String text;
+  final fontW8t;
+  final fontsize;
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +20,24 @@ class BoldTxtFont18 extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'Roboto',
         color: kFontColour,
-        fontWeight: FontWeight.bold,
+        fontWeight: fontW8t,
+        fontSize: fontsize,
       ),
     );
   }
 }
 
 // Light font classes
-class LightTxtFont18 extends StatelessWidget {
-  LightTxtFont18({@required this.text});
+class ReusableLightTxtFont extends StatelessWidget {
+  ReusableLightTxtFont({
+    @required this.text,
+    @required this.fontW8t,
+    @required this.fontsize,
+  });
 
   final String text;
+  final fontW8t;
+  final fontsize;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +45,9 @@ class LightTxtFont18 extends StatelessWidget {
       text,
       style: TextStyle(
         fontFamily: 'Roboto',
+        fontSize: fontsize,
         color: kFontColour,
-        fontWeight: FontWeight.w100,
+        fontWeight: fontW8t,
       ),
     );
   }

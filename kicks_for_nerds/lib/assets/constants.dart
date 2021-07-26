@@ -43,9 +43,6 @@ const kRightContentMargin = EdgeInsets.only(
 
 const kRadiusNumber = 24.0;
 
-const kSmallButtonHeight = 50.0;
-const kSmallButtonWidth = 158.0;
-
 const kTopBoxCurves = BorderRadius.vertical(
   top: Radius.circular(kRadiusNumber),
 );
@@ -61,3 +58,12 @@ const kLightBGClr = Colors.white;
 const kDarkbgClr = kBlackCustomClr;
 
 const kBGClr = kLightBGClr;
+
+const kBoldTxt = FontWeight.bold;
+
+const kLightTxt = FontWeight.w100;
+
+const kFontSize12 = 12.0;
+const kFontSize18 = 18.0;
+
+const kFontSize36 = 36.0;

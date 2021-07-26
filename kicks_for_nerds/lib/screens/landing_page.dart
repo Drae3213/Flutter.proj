@@ -3,10 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 import 'package:kicks_for_nerds/components/reusable_card.dart';
 import 'package:kicks_for_nerds/components/landing_page_nav.dart';
-import 'package:kicks_for_nerds/components/small_button.dart';
-import 'package:kicks_for_nerds/components/txt_fonts.dart';
-import 'login_page.dart';
-import 'register_page.dart';
+import 'package:kicks_for_nerds/components/reusable_buttons.dart';
+import 'package:kicks_for_nerds/assets/variables.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -59,10 +57,14 @@ class _LandingPageState extends State<LandingPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     SmallButton(
+                      buttonHeight: vNormalButtonHeight,
+                      buttonWidth: vSmallButtonWidth,
                       title: 'Login',
                       routePage: '/log',
                     ),
                     SmallButton(
+                      buttonHeight: vNormalButtonHeight,
+                      buttonWidth: vSmallButtonWidth,
                       title: 'Register',
                       routePage: '/reg',
                     ),
