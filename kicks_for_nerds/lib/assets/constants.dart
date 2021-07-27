@@ -6,21 +6,24 @@ const kBlackCustomClr = Color(0xFF0F0F0F);
 const kMagentaClr = Color(0xFFFF006B);
 const kPurpleClr = Color(0xFF9C01AE);
 
-const kGradClr = BoxDecoration(
-  gradient: LinearGradient(
-    begin: Alignment.topRight,
-    end: Alignment.bottomLeft,
-    colors: [kMagentaClr, kPurpleClr],
-  ),
-);
+const kDarkMagentaClr = Color(0xFF53002A);
+const kDarkPurpleClr = Color(0xFF3D0139);
 
-const kSolidGrad = BoxDecoration(
-  gradient: LinearGradient(
-    begin: Alignment.topRight,
-    end: Alignment.bottomLeft,
-    colors: [kBlackCustomClr, kBlackCustomClr],
-  ),
-);
+// const kGradClr = BoxDecoration(
+//   gradient: LinearGradient(
+//     begin: Alignment.topRight,
+//     end: Alignment.bottomLeft,
+//     colors: [kMagentaClr, kPurpleClr],
+//   ),
+// );
+
+// const kSolidGrad = BoxDecoration(
+//   gradient: LinearGradient(
+//     begin: Alignment.topRight,
+//     end: Alignment.bottomLeft,
+//     colors: [kBlackCustomClr, kBlackCustomClr],
+//   ),
+// );
 
 const kTopContentMargin = EdgeInsets.only(
   left: 24,
@@ -49,9 +52,9 @@ const kTopBoxCurves = BorderRadius.vertical(
 
 const kFontColour = Colors.white;
 
-const kActiveButtonClr = kGradClr;
+// const kActiveButtonClr = kGradClr;
 
-const kInActiveButtonClr = kBlackCustomClr;
+// const kInActiveButtonClr = kBlackCustomClr;
 
 const kLightBGClr = Colors.white;
 
@@ -61,9 +64,24 @@ const kBGClr = kLightBGClr;
 
 const kBoldTxt = FontWeight.bold;
 
+const kRegularTxt = FontWeight.w400;
+
 const kLightTxt = FontWeight.w100;
 
 const kFontSize12 = 12.0;
 const kFontSize18 = 18.0;
 
 const kFontSize36 = 36.0;
+
+const String kEmailTxt = 'E-mail address';
+
+const String kNumberTxt = '+1 Phone';
+
+const String kPasswordTxt = 'Password';
+
+const String kUserTxt = 'Username';
+
+const double kIconImageHeight = 20.0;
+const double kNavIconImageHeight = 15.0;
+
+const double kCircleRadNumber = 36.0;

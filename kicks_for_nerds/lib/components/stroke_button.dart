@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
-// import 'package:kicks_for_nerds/assets/constants.dart';
-// import 'package:kicks_for_nerds/components/reusable_card.dart';
-import 'txt_form.dart';
 
 class StrokeButton extends StatelessWidget {
-  StrokeButton({this.txt});
+  const StrokeButton({Key key, this.txt}) : super(key: key);
 
   final String txt;
 
@@ -13,34 +10,39 @@ class StrokeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 24,
-        right: 24,
-        bottom: 10,
+        left: 24.0,
+        right: 24.0,
+        top: 10,
       ),
-      child: OutlinedButton(
-        onPressed: () {},
-        child: TxtForm(
-          txt: txt,
-        ),
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(
-            kBlackCustomClr,
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                kRadiusNumber,
-              ),
+      child: Container(
+        child: TextField(
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(
+              24,
+              30,
+              24,
+              0,
             ),
+            hintText: txt,
+            hintStyle: TextStyle(
+              fontFamily: 'Roboto',
+              fontSize: kFontSize12,
+            ),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+            ),
+          ),
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            24.0,
+          ),
+          border: Border.all(
+            color: Colors.black,
+            width: 2.0,
           ),
         ),
       ),
     );
   }
 }
-
-
-  // decoration: BoxDecoration(
-  //       borderRadius: BorderRadius.circular(
-  //         kRadiusNumber,
-  //       ),

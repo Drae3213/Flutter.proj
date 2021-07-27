@@ -6,6 +6,7 @@ import 'txt_fonts.dart';
 import 'package:kicks_for_nerds/assets/enums.dart';
 import 'package:kicks_for_nerds/assets/lists.dart';
 import 'package:kicks_for_nerds/assets/variables.dart';
+import 'package:kicks_for_nerds/main.dart';
 
 //small button
 
@@ -62,12 +63,13 @@ class _SmallButtonState extends State<SmallButton> {
           cardChild: ToggleBold(
             fontType: hasBeenPressed ? font.bold : font.light,
             boldTxtFont: ReusbaleBoldTxtFont(
+              fontW8t: kBoldTxt,
               fontsize: kFontSize18,
               text: widget.title,
             ),
-            lightTxtFont: ReusableLightTxtFont(
+            regularTxtFont: ReusableRegularTxtFont(
               fontsize: kFontSize18,
-              fontW8t: kLightTxt,
+              fontW8t: kRegularTxt,
               text: widget.title,
             ),
           ),
@@ -137,11 +139,10 @@ class _BiggerButtonState extends State<BiggerButton> {
               fontsize: kFontSize12,
               text: widget.title,
             ),
-            lightTxtFont: ReusableLightTxtFont(
-              fontsize: kFontSize12,
-              fontW8t: kLightTxt,
-              text: widget.title,
-            ),
+            regularTxtFont: ReusableRegularTxtFont(
+                fontsize: kFontSize12,
+                fontW8t: kRegularTxt,
+                text: widget.title),
           ),
           height: vNormalButtonHeight.toDouble(),
           width: 327,
