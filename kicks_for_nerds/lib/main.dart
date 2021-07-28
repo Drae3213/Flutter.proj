@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/home',
+      initialRoute: '/profile',
       routes: {
         '/land': (context) => LandingPage(),
         '/reg': (context) => FirstRegisterPage(),

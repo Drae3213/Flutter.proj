@@ -69,8 +69,8 @@ const kRegularTxt = FontWeight.w400;
 const kLightTxt = FontWeight.w100;
 
 const kFontSize12 = 12.0;
+const kFontSize14 = 14.0;
 const kFontSize18 = 18.0;
-
 const kFontSize36 = 36.0;
 
 const String kEmailTxt = 'E-mail address';

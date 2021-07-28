@@ -15,3 +15,11 @@ List<Color> lSolidGrad = [
   kBlackCustomClr,
   kBlackCustomClr,
 ];
+
+List<String> lStoryImages = [
+  'images/ttc.png',
+  'images/rdr.png',
+  'images/tvs.jpg',
+  'images/psm.png',
+  'images/mkm.jpg',
+];
