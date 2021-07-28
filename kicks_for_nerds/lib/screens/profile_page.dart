@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
+import 'package:kicks_for_nerds/assets/lists.dart';
 import 'package:kicks_for_nerds/components/Following_Followers.dart';
+import 'package:kicks_for_nerds/components/nav_bar.dart';
 import 'package:kicks_for_nerds/components/story_frame.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -23,7 +25,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 203,
                 width: 375,
                 decoration: BoxDecoration(
-                  color: kBaseWidgetColor,
+                  image: DecorationImage(
+                    alignment: Alignment.topCenter,
+                    fit: BoxFit.fitWidth,
+                    image: AssetImage(
+                      'images/aot.png',
+                    ),
+                  ),
+                  // color: kBaseWidgetColor,
                   borderRadius: BorderRadius.circular(kRadiusNumber),
                 ),
                 child: Column(
@@ -125,141 +134,209 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
             clipBehavior: Clip.none,
           ),
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(105, 39, 104, 0),
-                child: Wrap(
-                  children: <Widget>[
-                    Text(
-                      'Muwa, The Producer',
-                      style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: kFontSize18,
-                          fontWeight: kBoldTxt),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(60, 12, 60, 0),
-                child: Wrap(
-                  direction: Axis.horizontal,
-                  children: <Widget>[
-                    Text(
-                      'An aspiring young black entrepenuer, turning my shoe game into reality.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: kFontSize12,
-                        fontWeight: kLightTxt,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(
-              0,
-              18,
-              0,
-              0,
-            ),
-            height: 65,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                SizedBox(
-                  width: 24,
-                ),
-                StoryFrame(),
-                StoryFrame(),
-                StoryFrame(),
-                StoryFrame(),
-                StoryFrame(),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 17, 24, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(
-                      '15',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: kFontSize14,
-                        fontWeight: kBoldTxt,
-                      ),
-                    ),
-                    CircleAvatar(
-                      radius: 2,
-                      backgroundColor: Colors.black,
-                    ),
-                  ],
-                ),
-                Image.asset(
-                  'images/tagged_icon.png',
-                  height: kIconImageHeight,
-                ),
-                Image.asset(
-                  'images/bag_icon.png',
-                  height: kIconImageHeight,
-                ),
-                SizedBox(
-                  width: 149,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          CircleAvatar(
-                            radius: 2,
-                            backgroundColor: Colors.black,
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          CircleAvatar(
-                            radius: 2,
-                            backgroundColor: Colors.black,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-              width: 327,
+          Expanded(
+            child: Container(
+              width: double.infinity,
               height: double.infinity,
-              child: ListView(
-                scrollDirection: Axis.vertical,
+              // decoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //       colors: lProfileGrad,
+              //       begin: Alignment.topCenter,
+              //       end: Alignment.bottomCenter),
+              // ),
+              child: Column(
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        width: 101,
-                        height: 101,
-                        decoration: BoxDecoration(
-                          color: kBaseWidgetColor,
-                          borderRadius: BorderRadius.circular(
-                            kCircleRadNumber,
-                          ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(105, 39, 104, 0),
+                        child: Wrap(
+                          children: <Widget>[
+                            Text(
+                              'Muwa, The Producer',
+                              style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontSize: kFontSize18,
+                                  fontWeight: kBoldTxt),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(60, 12, 60, 0),
+                        child: Wrap(
+                          direction: Axis.horizontal,
+                          children: <Widget>[
+                            Text(
+                              'An aspiring young black entrepenuer, turning my shoe game into reality.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: kFontSize12,
+                                fontWeight: kLightTxt,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(
+                      0,
+                      18,
+                      0,
+                      0,
+                    ),
+                    height: 65,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 24,
+                        ),
+                        StoryFrame(),
+                        StoryFrame(),
+                        StoryFrame(),
+                        StoryFrame(),
+                        StoryFrame(),
+                      ],
+                    ),
+                  ),
+                  // post-count, tagged, store
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 17, 24, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              '15',
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: kFontSize14,
+                                fontWeight: kBoldTxt,
+                              ),
+                            ),
+                            CircleAvatar(
+                              radius: 2,
+                              backgroundColor: Colors.pinkAccent[400],
+                            ),
+                          ],
+                        ),
+                        Image.asset(
+                          'images/tagged_icon.png',
+                          height: kIconImageHeight,
+                        ),
+                        Image.asset(
+                          'images/bag_icon.png',
+                          height: kIconImageHeight,
+                        ),
+                        SizedBox(
+                          width: 149,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
+                                  CircleAvatar(
+                                    radius: 2,
+                                    backgroundColor: Colors.black,
+                                  ),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  CircleAvatar(
+                                    radius: 2,
+                                    backgroundColor: Colors.black,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Posts
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+                      child: GridView.count(
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        crossAxisCount: 3,
+                        children: List.generate(
+                          12,
+                          (index) {
+                            return PostBlock();
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Stack(
+                  //   children: <Widget>[
+                  //     Positioned(
+                  //       top: 252,
+                  //       left: 24,
+                  //       child: NavBar(),
+                  //     ),
+                  //   ],
+                  //   clipBehavior: Clip.none,
+                  // ),
                 ],
-              )),
+              ),
+            ),
+          ),
+          // Container(
+          //   width: 327,
+          //   height: double.infinity,
+          //   child: ListView(
+          //     scrollDirection: Axis.vertical,
+          //     children: <Widget>[
+          //       Row(
+          //         children: <Widget>[
+          //           Container(
+          //             width: 101,
+          //             height: 101,
+          //             decoration: BoxDecoration(
+          //               color: kBaseWidgetColor,
+          //               borderRadius: BorderRadius.circular(
+          //                 kCircleRadNumber,
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ],
+      ),
+    );
+  }
+}
+
+class PostBlock extends StatelessWidget {
+  const PostBlock({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 101,
+      height: 101,
+      decoration: BoxDecoration(
+        color: kBaseWidgetColor,
+        borderRadius: BorderRadius.circular(
+          kCircleRadNumber,
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// color
 const kBaseWidgetColor = Color(0xFFE0E0E0);
 const kBlackCustomClr = Color(0xFF0F0F0F);
 
@@ -8,6 +9,9 @@ const kPurpleClr = Color(0xFF9C01AE);
 
 const kDarkMagentaClr = Color(0xFF53002A);
 const kDarkPurpleClr = Color(0xFF3D0139);
+
+const kLowMagentaClr = Color(0x50B4A5AC);
+const kLowPurpleClr = Color(0x50AFA5B0);
 
 // const kGradClr = BoxDecoration(
 //   gradient: LinearGradient(

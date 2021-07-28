@@ -6,9 +6,19 @@ List<Color> lGradClr = [
   kPurpleClr,
 ];
 
+List<Color> lLowGradClr = [
+  kLowPurpleClr,
+  kLowMagentaClr,
+];
+
 List<Color> lReversedGradClr = [
   kDarkPurpleClr,
   kDarkMagentaClr,
+];
+
+List<Color> lProfileGrad = [
+  kMagentaClr,
+  kBGClr,
 ];
 
 List<Color> lSolidGrad = [

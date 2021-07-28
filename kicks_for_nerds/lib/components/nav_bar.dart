@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
+import 'package:kicks_for_nerds/assets/lists.dart';
 import 'package:kicks_for_nerds/assets/variables.dart';
 
 class NavBar extends StatefulWidget {
@@ -16,6 +17,15 @@ class _NavBarState extends State<NavBar> {
       height: vNormalButtonHeight,
       width: vBiggerButtonWidth,
       decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: lLowGradClr,
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+        ),
+        border: Border.all(
+          color: Colors.black,
+          width: 1.0,
+        ),
         color: kBaseWidgetColor,
         borderRadius: BorderRadius.circular(
           kRadiusNumber,
