@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 
 class StrokeButton extends StatelessWidget {
-  const StrokeButton({Key key, this.txt}) : super(key: key);
+  const StrokeButton({
+    Key key,
+    this.txt,
+    this.onChangedProperty,
+  }) : super(key: key);
 
   final String txt;
+  final onChangedProperty;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +21,7 @@ class StrokeButton extends StatelessWidget {
       ),
       child: Container(
         child: TextField(
+          onChanged: onChangedProperty,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.fromLTRB(
               24,

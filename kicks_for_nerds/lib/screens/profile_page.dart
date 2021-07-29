@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: <Widget>[
                           GestureDetector(
                             onDoubleTap: () {
-                              Navigator.pop(context);
+                              Navigator.pushNamed(context, '/log');
                             },
                             child: Container(
                               height: 25,
@@ -279,43 +279,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                   ),
-                  // Stack(
-                  //   children: <Widget>[
-                  //     Positioned(
-                  //       top: 252,
-                  //       left: 24,
-                  //       child: NavBar(),
-                  //     ),
-                  //   ],
-                  //   clipBehavior: Clip.none,
-                  // ),
                 ],
               ),
             ),
           ),
-          // Container(
-          //   width: 327,
-          //   height: double.infinity,
-          //   child: ListView(
-          //     scrollDirection: Axis.vertical,
-          //     children: <Widget>[
-          //       Row(
-          //         children: <Widget>[
-          //           Container(
-          //             width: 101,
-          //             height: 101,
-          //             decoration: BoxDecoration(
-          //               color: kBaseWidgetColor,
-          //               borderRadius: BorderRadius.circular(
-          //                 kCircleRadNumber,
-          //               ),
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ],
-          //   ),
-          // ),
         ],
       ),
     );
