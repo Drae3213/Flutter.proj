@@ -102,8 +102,10 @@ class _StreamerState extends State<Streamer> {
           if (snapshot.data == null) {
             return snapshot.connectionState == ConnectionState.waiting
                 ? LoadingPage()
-                : LandingPage();
+                // using to edit pages
+                : HomePage();
           } else {
+            // switch this to profile when done
             return ProfilePage();
           }
         },
