@@ -52,6 +52,10 @@ class _LoadingPageState extends State<LoadingPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Image.asset('images/loading_logo.png'),
+                SizedBox(height: 20),
+                CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
                 // ElevatedButton(
                 //   style: ElevatedButton.styleFrom(
                 //     primary: Color(

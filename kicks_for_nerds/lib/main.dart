@@ -14,6 +14,7 @@ import 'package:kicks_for_nerds/screens/second_register_page.dart';
 import 'package:kicks_for_nerds/screens/forgot_password.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
 
+
 void main() {
   runApp(MyApp());
 }
