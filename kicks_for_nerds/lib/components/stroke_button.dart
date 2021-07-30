@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 
-class StrokeButton extends StatelessWidget {
-  const StrokeButton({
+class StrokeButtonField extends StatelessWidget {
+  const StrokeButtonField({
     Key key,
     this.txt,
     this.onChangedProperty,

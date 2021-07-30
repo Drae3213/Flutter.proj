@@ -12,6 +12,8 @@ class DataBase {
       {
         'uid': user.uid,
         'email': user.email,
+        'password': user.password, 
+
         // 'username': username,
         //add as many attributes as you want
       },

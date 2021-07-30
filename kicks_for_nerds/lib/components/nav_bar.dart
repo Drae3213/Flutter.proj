@@ -36,7 +36,7 @@ class _NavBarState extends State<NavBar> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 36),
       child: Material(
-        elevation: 10,
+        elevation: 10.0,
         borderRadius: BorderRadius.circular(kRadiusNumber),
         color: Colors.black,
         child: Container(

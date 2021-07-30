@@ -36,7 +36,7 @@ class _SecondRegisterPageState extends State<SecondRegisterPage> {
                 ],
               ),
             ),
-            StrokeButton(
+            StrokeButtonField(
               txt: kUserTxt,
             ),
             Padding(

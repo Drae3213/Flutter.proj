@@ -81,9 +81,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           //   'images/settings_icon.png',
                           //   height: 20,
                           // ),
-                          Image.asset(
-                            'images/settings_icon.png',
-                            height: 29,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/log');
+                            },
+                            child: Image.asset(
+                              'images/settings_icon.png',
+                              height: 29,
+                            ),
                           ),
                         ],
                       ),

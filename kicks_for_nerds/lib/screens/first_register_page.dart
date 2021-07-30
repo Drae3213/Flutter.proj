@@ -51,23 +51,15 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
                   ],
                 ),
               ),
-              StrokeButton(
-                onChangedProperty: (val) {
-                  setState(
-                    () => username = val.trim(),
-                  );
-                },
-                txt: kUserTxt,
-              ),
-              StrokeButton(
-                onChangedProperty: (val) {
-                  setState(
-                    () => password = val.trim(),
-                  );
-                },
-                txt: kPasswordTxt,
-              ),
-              StrokeButton(
+              // StrokeButtonField(
+              //   onChangedProperty: (val) {
+              //     setState(
+              //       () => username = val.trim(),
+              //     );
+              //   },
+              //   txt: kUserTxt,
+              // ),
+              StrokeButtonField(
                 onChangedProperty: (val) {
                   setState(
                     () => email = val.trim(),
@@ -75,14 +67,23 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
                 },
                 txt: kEmailTxt,
               ),
-              StrokeButton(
+              StrokeButtonField(
                 onChangedProperty: (val) {
                   setState(
-                    () => phone = val.trim(),
+                    () => password = val.trim(),
                   );
                 },
-                txt: kNumberTxt,
+                txt: kPasswordTxt,
               ),
+
+              // StrokeButtonField(
+              //   onChangedProperty: (val) {
+              //     setState(
+              //       () => phone = val.trim(),
+              //     );
+              //   },
+              //   txt: kNumberTxt,
+              // ),
               Padding(
                 padding: const EdgeInsets.only(
                   top: 12,

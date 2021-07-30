@@ -8,7 +8,7 @@ class AuthService {
   //create MyAppUser from a Firebase User
   // ignore: missing_return
   MyAppUser _userFromFirebaseUser(User user) {
-    user != null ? MyAppUser(uid: user.uid, email: user.email) : null;
+    return user != null ? MyAppUser(uid: user.uid, email: user.email) : null;
   }
 
   //create Firebase User

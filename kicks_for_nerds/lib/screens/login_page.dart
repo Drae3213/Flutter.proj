@@ -50,15 +50,15 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              StrokeButton(
-                txt: kUserTxt,
+              StrokeButtonField(
+                txt: kEmailTxt,
                 onChangedProperty: (val) {
                   setState(
                     () => email = val.trim(),
                   );
                 },
               ),
-              StrokeButton(
+              StrokeButtonField(
                 txt: kPasswordTxt,
                 onChangedProperty: (val) {
                   setState(() => password = val.trim());

@@ -14,7 +14,6 @@ import 'package:kicks_for_nerds/screens/second_register_page.dart';
 import 'package:kicks_for_nerds/screens/forgot_password.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -104,7 +103,7 @@ class _StreamerState extends State<Streamer> {
             return snapshot.connectionState == ConnectionState.waiting
                 ? LoadingPage()
                 // using to edit pages
-                : HomePage();
+                : LandingPage();
           } else {
             // switch this to profile when done
             return ProfilePage();
