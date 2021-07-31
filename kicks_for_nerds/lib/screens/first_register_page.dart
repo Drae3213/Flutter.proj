@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 import 'package:kicks_for_nerds/assets/variables.dart';
@@ -7,7 +6,6 @@ import 'package:kicks_for_nerds/components/stroke_button.dart';
 import 'package:kicks_for_nerds/components/custom_back_button.dart';
 import 'package:kicks_for_nerds/components/under_button_txt.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
-import 'package:kicks_for_nerds/assets/variables.dart';
 
 class FirstRegisterPage extends StatefulWidget {
   @override

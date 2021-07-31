@@ -12,6 +12,7 @@ import 'package:kicks_for_nerds/screens/profile_page.dart';
 import 'package:kicks_for_nerds/screens/search_page.dart';
 import 'package:kicks_for_nerds/screens/second_register_page.dart';
 import 'package:kicks_for_nerds/screens/forgot_password.dart';
+import 'package:kicks_for_nerds/screens/upload_page.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
 
 void main() {
@@ -95,6 +96,7 @@ class _StreamerState extends State<Streamer> {
         '/dms': (context) => Dmspage(),
         '/profile': (context) => ProfilePage(),
         '/forgot': (context) => ForgotPasswordPage(),
+        '/upload': (context) => UploadPage(),
       },
       home: StreamBuilder(
         stream: _streamProvider,
@@ -106,10 +108,20 @@ class _StreamerState extends State<Streamer> {
                 : LandingPage();
           } else {
             // switch this to profile when done
-            return ProfilePage();
+            return UploadPage();
           }
         },
       ),
     );
   }
 }
+
+
+
+// service firebase.storage {
+//   match /b/{bucket}/o {
+//     match /{allPaths=**} {
+//       allow read, write: if request.auth != null;
+//     }
+//   }
+// }
