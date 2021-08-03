@@ -14,6 +14,7 @@ import 'package:kicks_for_nerds/screens/second_register_page.dart';
 import 'package:kicks_for_nerds/screens/forgot_password.dart';
 import 'package:kicks_for_nerds/screens/upload_page.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
+import 'package:kicks_for_nerds/screens/search_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -97,6 +98,7 @@ class _StreamerState extends State<Streamer> {
         '/profile': (context) => ProfilePage(),
         '/forgot': (context) => ForgotPasswordPage(),
         '/upload': (context) => UploadPage(),
+        '/srch': (context) => SearchPage(),
       },
       home: StreamBuilder(
         stream: _streamProvider,

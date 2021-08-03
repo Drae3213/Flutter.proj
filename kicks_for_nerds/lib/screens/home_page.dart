@@ -30,13 +30,19 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Image.asset(
-                  'images/cam_arrow.png',
-                  height: kIconImageHeight,
+                GestureDetector(
+                  onTap: () {},
+                  child: Image.asset(
+                    'images/cam_arrow.png',
+                    height: kIconImageHeight,
+                  ),
                 ),
-                Image.asset(
-                  'images/shop_arrow.png',
-                  height: kIconImageHeight,
+                GestureDetector(
+                  onTap: () {},
+                  child: Image.asset(
+                    'images/shop_arrow.png',
+                    height: kIconImageHeight,
+                  ),
                 ),
               ],
             ),

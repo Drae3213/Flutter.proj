@@ -53,6 +53,12 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
               GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/srch',
+                  );
+                },
                 child: Image.asset(
                   'images/search_icon.png',
                   height: kNavIconImageHeight,
@@ -60,7 +66,10 @@ class _NavBarState extends State<NavBar> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/upload');
+                  Navigator.pushNamed(
+                    context,
+                    '/upload',
+                  );
                   // print('success');
                   // getImageGallery();
                 },
@@ -70,6 +79,12 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
               GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/dms',
+                  );
+                },
                 child: Image.asset(
                   'images/dm_icon.png',
                   height: kNavIconImageHeight,
@@ -77,7 +92,10 @@ class _NavBarState extends State<NavBar> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/profile');
+                  Navigator.pushNamed(
+                    context,
+                    '/profile',
+                  );
                 },
                 child: CircleAvatar(
                   radius: 10,
