@@ -25,8 +25,13 @@ class DataBase {
 class DataService {
   final connection = FirebaseDatabase.instance.reference();
 
-  Future<void> savePost(title, text, imageURL) async {
+  Future<void> savePost({title, text, imageUrl}) async {
     String id = Uuid().v1();
     final postReference = connection.child('post').child(id);
+    postReference.set({
+      'title': title,
+      'text': text,
+      'imageUrl': imageUrl,
+    });
   }
 }

@@ -15,6 +15,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:intl/intl.dart';
 import 'package:kicks_for_nerds/screens/home_page.dart';
+import 'package:kicks_for_nerds/services/database.dart';
 
 class UploadPage extends StatefulWidget {
   const UploadPage({Key key}) : super(key: key);
@@ -26,6 +27,7 @@ class UploadPage extends StatefulWidget {
 class _UploadPageState extends State<UploadPage> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
   var _profileImage;
+
   final picker = ImagePicker();
 
   Future getImageGallery() async {
@@ -81,7 +83,7 @@ class _UploadPageState extends State<UploadPage> {
 
       print("ImageUrl = " + url);
 
-      goToHomePage();
+      // goToHomePage();
 
       saveToDatabase(url);
     }
@@ -107,12 +109,12 @@ class _UploadPageState extends State<UploadPage> {
     ref.child("Posts").push().set(data);
   }
 
-  void goToHomePage() {
-    Navigator.pushNamed(
-      context,
-      '/home',
-    );
-  }
+  // void goToHomePage() {
+  //   Navigator.pushNamed(
+  //     context,
+  //     '/home',
+  //   );
+  // }
 
   var title;
 
@@ -153,16 +155,28 @@ class _UploadPageState extends State<UploadPage> {
                   width: double.infinity,
                   height: 200,
                   baseColour: kBaseWidgetColor,
+                  cardChild: _profileImage == null
+                      ? Center(
+                          child: Text("Image not loaded"),
+                        )
+                      : Image.file(
+                          _profileImage,
+                          fit: BoxFit.fill,
+                        ),
                 ),
                 StrokeButtonField(
                   onChangedProperty: (val) {
-                    setState(() => title = val.trim());
+                    setState(
+                      () => title = val.trim(),
+                    );
                   },
                   txt: 'Title',
                 ),
                 StrokeButtonField(
                   onChangedProperty: (val) {
-                    setState(() => title = val.trim());
+                    setState(
+                      () => text = val.trim(),
+                    );
                   },
                   txt: 'Text',
                 ),
