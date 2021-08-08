@@ -85,29 +85,29 @@ class _UploadPageState extends State<UploadPage> {
 
       // goToHomePage();
 
-      saveToDatabase(url);
+      // saveToDatabase(url);
     }
   }
 
-  void saveToDatabase(url) {
-    var dbTimeKey = new DateTime.now();
-    var formatDate = new DateFormat('MMM d, yyyy');
-    var formtTime = new DateFormat('EEEE, hh:mm aaa');
+  // void saveToDatabase(url) {
+  //   var dbTimeKey = new DateTime.now();
+  //   var formatDate = new DateFormat('MMM d, yyyy');
+  //   var formtTime = new DateFormat('EEEE, hh:mm aaa');
 
-    String date = formatDate.format(dbTimeKey);
-    String time = formtTime.format(dbTimeKey);
+  //   String date = formatDate.format(dbTimeKey);
+  //   String time = formtTime.format(dbTimeKey);
 
-    DatabaseReference ref = FirebaseDatabase.instance.reference();
+  //   DatabaseReference ref = FirebaseDatabase.instance.reference();
 
-    var data = {
-      "image": url,
-      "description": _myValue,
-      "date": date,
-      "time": time,
-    };
+  //   var data = {
+  //     "image": url,
+  //     "description": _myValue,
+  //     "date": date,
+  //     "time": time,
+  //   };
 
-    ref.child("Posts").push().set(data);
-  }
+  //   ref.child("Posts").push().set(data);
+  // }
 
   // void goToHomePage() {
   //   Navigator.pushNamed(
@@ -116,11 +116,9 @@ class _UploadPageState extends State<UploadPage> {
   //   );
   // }
 
-  var title;
+  String title = '';
 
-  var text;
-
-  var imageUrl;
+  String text = '';
 
   @override
   Widget build(BuildContext context) {
@@ -166,17 +164,15 @@ class _UploadPageState extends State<UploadPage> {
                 ),
                 StrokeButtonField(
                   onChangedProperty: (val) {
-                    setState(
-                      () => title = val.trim(),
-                    );
+                    title = val.toString();
+                    // print(text);
                   },
                   txt: 'Title',
                 ),
                 StrokeButtonField(
                   onChangedProperty: (val) {
-                    setState(
-                      () => text = val.trim(),
-                    );
+                    text = val.toString();
+                    // print(text);
                   },
                   txt: 'Text',
                 ),
@@ -197,17 +193,14 @@ class _UploadPageState extends State<UploadPage> {
                     top: 12,
                   ),
                   child: BiggerButton(
-                    onPressed: uploadStatusImage,
-                    title: 'Upload',
-                    buttonHeight: vNormalButtonHeight,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 12,
-                  ),
-                  child: BiggerButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      uploadStatusImage();
+                      await DataService().savePost(
+                        title: title,
+                        text: text,
+                        imageUrl: url,
+                      );
+                    },
                     title: 'Post',
                     buttonHeight: vNormalButtonHeight,
                   ),
