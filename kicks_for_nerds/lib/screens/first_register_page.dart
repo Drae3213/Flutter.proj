@@ -95,7 +95,7 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
                       dynamic result =
                           await _auth.registerFirebaseUser(email, password);
                       if (result == null) {
-                        setState(() => error = 'error, coukd not sign in user');
+                        setState(() => error = 'error, could not sign in user');
                       }
                     } else {
                       setState(
@@ -106,7 +106,6 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
                       );
                     }
                   },
-                  routePage: '/regtwo',
                   title: 'Next',
                   buttonHeight: vNormalButtonHeight,
                 ),

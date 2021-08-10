@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 
-class ReusableCard extends StatelessWidget {
-  ReusableCard({
-    this.height,
-    this.width,
-    this.baseColour,
-    this.cardChild,
-    this.marginSize,
-    this.grad,
-  });
+class PostCard extends StatelessWidget {
+  PostCard(
+      {this.height,
+      this.width,
+      this.baseColour,
+      this.cardChild,
+      this.marginSize,
+      this.grad,
+      this.image});
 
   final marginSize;
   final double height;
@@ -17,6 +17,7 @@ class ReusableCard extends StatelessWidget {
   final Widget cardChild;
   final double width;
   final grad;
+  final image;
 
   // final <>imagepic;
 
@@ -28,6 +29,9 @@ class ReusableCard extends StatelessWidget {
       height: height,
       margin: marginSize,
       decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(image),
+        ),
         borderRadius: BorderRadius.circular(
           kRadiusNumber,
         ),
@@ -37,3 +41,13 @@ class ReusableCard extends StatelessWidget {
     );
   }
 }
+
+
+
+// Container(
+//       decoration: BoxDecoration(
+//     image: DecorationImage(
+//           image: NetworkImage(image),
+//         ),
+//       ),
+//     );

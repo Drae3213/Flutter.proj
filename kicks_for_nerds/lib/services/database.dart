@@ -1,4 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
+import 'package:kicks_for_nerds/models/posts.dart';
 import 'package:uuid/uuid.dart';
 
 class DataBase {
@@ -13,25 +15,41 @@ class DataBase {
       {
         'uid': user.uid,
         'email': user.email,
-        'password': user.password,
+        // 'password': user.password,
 
         // 'username': username,
         //add as many attributes as you want
       },
     );
   }
-}
-
-class DataService {
-  final connection = FirebaseDatabase.instance.reference();
 
   Future<void> savePost({title, text, imageUrl}) async {
     String id = Uuid().v1();
-    final postReference = connection.child('post').child(id);
+    final postReference = connection.child('posts').child(id);
     postReference.set({
       'title': title,
       'text': text,
       'imageUrl': imageUrl,
     });
   }
+
+  List getPost({AsyncSnapshot snapshot}) {
+    final postReference = connection.child('posts');
+    final List postList = [];
+    final Map<dynamic, dynamic> postMap = snapshot.data.snapshot.value;
+    postMap.forEach(
+      (key, value) {
+        postList.add(
+          Post(
+            imageUrl: value['imageUrl'],
+            title: value['title'],
+            text: value['text'],
+          ),
+        );
+      },
+    );
+    return postList;
+  }
 }
+
+// class DataService {}

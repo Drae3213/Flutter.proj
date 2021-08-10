@@ -194,8 +194,8 @@ class _UploadPageState extends State<UploadPage> {
                   ),
                   child: BiggerButton(
                     onPressed: () async {
-                      uploadStatusImage();
-                      await DataService().savePost(
+                      await uploadStatusImage();
+                      await DataBase().savePost(
                         title: title,
                         text: text,
                         imageUrl: url,
