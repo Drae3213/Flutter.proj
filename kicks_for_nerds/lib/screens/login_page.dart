@@ -7,6 +7,7 @@ import 'package:kicks_for_nerds/components/stroke_button.dart';
 import 'package:kicks_for_nerds/components/custom_back_button.dart';
 import 'package:kicks_for_nerds/components/under_button_txt.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -52,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               StrokeButtonField(
                 txt: kEmailTxt,
+                hiddenPass: false,
                 onChangedProperty: (val) {
                   setState(
                     () => email = val.trim(),
@@ -60,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               StrokeButtonField(
                 txt: kPasswordTxt,
+                hiddenPass: true,
                 onChangedProperty: (val) {
                   setState(() => password = val.trim());
                 },
@@ -71,10 +74,23 @@ class _LoginPageState extends State<LoginPage> {
                 child: BiggerButton(
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      dynamic result = await _auth.signInWithEmailAndPassword(
-                          email: email, password: password);
+                      // dynamic result = await _auth.signInWithEmailAndPassword(
+                      //     email: email, password: password);
+                      dynamic result = await context
+                          .read<AuthService>()
+                          .loginFirebaseUser(email, password);
                       if (result == null) {
-                        setState(() => error = 'error, coukd not sign in user');
+                        setState(() => error = 'error, could not sign in user');
+                      } else {
+                        print(
+                          result,
+                        );
+                        // setState(() {
+                        //   Navigator.pushNamed(
+                        //     context,
+                        //     '/profile',
+                        //   );
+                        // });
                       }
                     } else {
                       setState(

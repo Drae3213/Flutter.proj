@@ -40,9 +40,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
             ),
             StrokeButtonField(
+              hiddenPass: false,
               txt: 'E-mail address',
             ),
             StrokeButtonField(
+              hiddenPass: false,
               txt: '+1 Phone',
             ),
             Padding(

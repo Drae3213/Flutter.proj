@@ -6,6 +6,7 @@ import 'package:kicks_for_nerds/components/stroke_button.dart';
 import 'package:kicks_for_nerds/components/custom_back_button.dart';
 import 'package:kicks_for_nerds/components/under_button_txt.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
+import 'package:provider/provider.dart';
 
 class FirstRegisterPage extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
   String error = '';
   String username = '';
   String phone = '';
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
   bool loading = false;
 
   @override
@@ -58,6 +59,7 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
               //   txt: kUserTxt,
               // ),
               StrokeButtonField(
+                hiddenPass: false,
                 onChangedProperty: (val) {
                   setState(
                     () => email = val.trim(),
@@ -66,6 +68,7 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
                 txt: kEmailTxt,
               ),
               StrokeButtonField(
+                hiddenPass: false,
                 onChangedProperty: (val) {
                   setState(
                     () => password = val.trim(),
@@ -92,10 +95,18 @@ class _FirstRegisterPageState extends State<FirstRegisterPage> {
                       print(password);
                       print(email);
 
-                      dynamic result =
-                          await _auth.registerFirebaseUser(email, password);
+                      dynamic result = await context
+                          .read<AuthService>()
+                          .registerFirebaseUser(email, password);
                       if (result == null) {
                         setState(() => error = 'error, could not sign in user');
+                      } else {
+                        setState(() {
+                          Navigator.pushNamed(
+                            context,
+                            '/log',
+                          );
+                        });
                       }
                     } else {
                       setState(

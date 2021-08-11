@@ -67,7 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '@Thedraeziest',
+                                  '@user',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 10,
@@ -85,9 +85,16 @@ class _ProfilePageState extends State<ProfilePage> {
                             onTap: () {
                               Navigator.pushNamed(context, '/log');
                             },
-                            child: Image.asset(
-                              'images/settings_icon.png',
-                              height: 29,
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  Navigator.pushNamed(context, '/set');
+                                });
+                              },
+                              child: Image.asset(
+                                'images/settings_icon.png',
+                                height: 29,
+                              ),
                             ),
                           ),
                         ],
@@ -128,11 +135,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     FollowerFollowingCount(
-                      titleCount: '43k',
+                      titleCount: '0k',
                       title: 'Followers',
                     ),
                     FollowerFollowingCount(
-                      titleCount: '2.12k',
+                      titleCount: '0k',
                       title: 'Following',
                     )
                   ],
@@ -160,7 +167,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Wrap(
                           children: <Widget>[
                             Text(
-                              'Muwa, The Producer',
+                              'User',
                               style: TextStyle(
                                   fontFamily: 'Roboto',
                                   fontSize: kFontSize18,

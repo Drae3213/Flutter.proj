@@ -3,8 +3,10 @@ import 'package:kicks_for_nerds/models/MyAppUser.dart';
 import 'package:kicks_for_nerds/services/database.dart';
 
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth;
+  AuthService(this._auth);
 
+  Stream<User> get authStateChanges => _auth.authStateChanges();
   //create MyAppUser from a Firebase User
   // ignore: missing_return
   MyAppUser _userFromFirebaseUser(User user) {
@@ -38,13 +40,15 @@ class AuthService {
     }
   }
 
-  Future signOutFirebaseUser() async {
-    try {
-      return _auth.signOut();
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
+  Future<void> signOutFirebaseUser() async {
+    await _auth.signOut();
+
+    // try {
+    //   await _auth.signOut();
+    // } catch (e) {
+    //   print(e.toString());
+    //   return null;
+    // }
   }
 
   Stream<MyAppUser> get user =>

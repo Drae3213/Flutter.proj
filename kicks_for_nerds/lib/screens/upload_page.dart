@@ -163,6 +163,7 @@ class _UploadPageState extends State<UploadPage> {
                         ),
                 ),
                 StrokeButtonField(
+                  hiddenPass: false,
                   onChangedProperty: (val) {
                     title = val.toString();
                     // print(text);
@@ -170,6 +171,7 @@ class _UploadPageState extends State<UploadPage> {
                   txt: 'Title',
                 ),
                 StrokeButtonField(
+                  hiddenPass: false,
                   onChangedProperty: (val) {
                     text = val.toString();
                     // print(text);

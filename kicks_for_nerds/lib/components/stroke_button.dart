@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 
 class StrokeButtonField extends StatelessWidget {
-  const StrokeButtonField({
-    Key key,
-    this.txt,
-    this.onChangedProperty,
-  }) : super(key: key);
+  const StrokeButtonField(
+      {Key key, this.txt, this.onChangedProperty, this.hiddenPass})
+      : super(key: key);
 
   final String txt;
   final onChangedProperty;
+  final hiddenPass;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +20,7 @@ class StrokeButtonField extends StatelessWidget {
       ),
       child: Container(
         child: TextField(
+          obscureText: hiddenPass,
           onChanged: onChangedProperty,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.fromLTRB(
@@ -33,7 +33,8 @@ class StrokeButtonField extends StatelessWidget {
             hintStyle: TextStyle(
               fontFamily: 'Roboto',
               fontSize: kFontSize12,
-            ),
+            ), 
+           
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
             ),
