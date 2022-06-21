@@ -49,7 +49,7 @@ class DataBase {
 
   // story saving function
   Future<void> saveStory(imageUrl) async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
 
     print("SAVINGGG STORY");
     print(user);
@@ -64,7 +64,7 @@ class DataBase {
 
   // firebase story retrieval function
   Future<List> getStory({AsyncSnapshot snapshot}) async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
     final storyReference = connection.child('stories');
     final List storyList = [];
     final Map<dynamic, dynamic> storyMap = snapshot.data.snapshot.value;
@@ -81,7 +81,7 @@ class DataBase {
   }
 
   Future<void> savePost({title, text, imageUrl}) async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
 
     print("SAVINGGG POST");
     print(user);
@@ -97,7 +97,7 @@ class DataBase {
   }
 
   Future<List> getPost({AsyncSnapshot snapshot}) async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
 
     print("GOT POST");
     print(user);
@@ -134,7 +134,7 @@ class DataBase {
   }
 
   Future<int> getPostLength() async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
     //TODO Made a change to the lengthReference connection "child('users').child(user).child('posts')"
     final lengthReference = connection.child('posts').child(user);
     int postLength =
@@ -143,7 +143,7 @@ class DataBase {
   }
 
   Future<void> setHandle(String handle) async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
     //TODO changed handles to handle
     final handleRef =
         connection.child('users').child(user).child('handle').child(user);
@@ -154,7 +154,7 @@ class DataBase {
   }
 
   Future<void> setUserName(String name) async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
     final handleRef =
         connection.child('users').child(user).child('fullName').child(user);
     handleRef.set({

@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
 //here
   String userUid = '';
   userRetrieval() async {
-    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    String user = await AuthService().currentUser();
     setState(() {
       userUid = user;
     });
@@ -160,10 +160,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 top: 140,
                 left: 125,
                 child: CircleAvatar(
-                  radius: 62.5, backgroundColor: kBaseWidgetColor,
-                  // backgroundImage: AssetImage(
-                  //   'images/ttc.png',
-                  // ),
+                  radius: 62.5,
+                  backgroundColor: kBaseWidgetColor,
+                  backgroundImage: AssetImage(
+                    'images/ttc.png',
+                  ),
                 ),
               ),
               Padding(
@@ -243,10 +244,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           width: 24,
                         ),
                         StoryFrame(),
-                        // StoryFrame(),
-                        // StoryFrame(),
-                        // StoryFrame(),
-                        // StoryFrame(),
+                        StoryFrame(),
+                        StoryFrame(),
+                        StoryFrame(),
+                        StoryFrame(),
                       ],
                     ),
                   ),
