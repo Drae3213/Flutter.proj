@@ -72,6 +72,7 @@ const kRegularTxt = FontWeight.w400;
 
 const kLightTxt = FontWeight.w100;
 
+const kFontSize10 = 10.0;
 const kFontSize12 = 12.0;
 const kFontSize14 = 14.0;
 const kFontSize18 = 18.0;
@@ -82,6 +83,10 @@ const String kEmailTxt = 'E-mail address';
 const String kNumberTxt = '+1 Phone';
 
 const String kPasswordTxt = 'Password';
+
+const String kfNameTxt = 'Name';
+
+const String khandleTxt = '@Handle';
 
 const String kUserTxt = 'Username';
 

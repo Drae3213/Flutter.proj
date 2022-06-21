@@ -1,20 +1,59 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 import 'package:kicks_for_nerds/assets/lists.dart';
+import 'package:kicks_for_nerds/assets/my_stream_builder.dart';
 import 'package:kicks_for_nerds/components/Following_Followers.dart';
 import 'package:kicks_for_nerds/components/nav_bar.dart';
 import 'package:kicks_for_nerds/components/post_block.dart';
+import 'package:kicks_for_nerds/components/post_card.dart';
 import 'package:kicks_for_nerds/components/story_frame.dart';
+import 'package:kicks_for_nerds/models/posts.dart';
+import 'package:kicks_for_nerds/services/auth.dart';
+import 'package:kicks_for_nerds/services/database.dart';
+
+import 'loading_page.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key key}) : super(key: key);
-
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  var posts;
+  final connection = FirebaseDatabase.instance.reference();
+
+//TODO change back to empty variable
+  int pL;
+//here
+  String userUid = '';
+  userRetrieval() async {
+    String user = await AuthService(FirebaseAuth.instance).currentUser();
+    setState(() {
+      userUid = user;
+    });
+  }
+
+  postLength() async {
+    int pLength = await DataBase().getPostLength().then(
+          (value) => value,
+        );
+    setState(() {
+      pL = pLength;
+    });
+  }
+
   @override
+  void initState() {
+    super.initState();
+    postLength();
+    userRetrieval();
+  }
+
+//here
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBGClr,
@@ -34,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       'images/aot.png',
                     ),
                   ),
-                  // color: kBaseWidgetColor,
+                  color: kBaseWidgetColor,
                   borderRadius: BorderRadius.circular(kRadiusNumber),
                 ),
                 child: Column(
@@ -56,7 +95,6 @@ class _ProfilePageState extends State<ProfilePage> {
                             },
                             child: Container(
                               height: 25,
-                              width: 86,
                               decoration: BoxDecoration(
                                 color: Color(
                                   0x75000000,
@@ -66,15 +104,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                               child: Center(
-                                child: Text(
-                                  '@user',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontFamily: 'Roboto',
+                                  // child: MyStreamBuilder(
+                                  //   fontSize: 10.0,
+                                  //   clrs: Colors.white,
+                                  //   userUid: userUid,
+                                  //   location: 'users',
+                                  //   valueKey: 'handle',
+                                  // ),
                                   ),
-                                ),
-                              ),
                             ),
                           ),
                           // Image.asset(
@@ -123,10 +160,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 top: 140,
                 left: 125,
                 child: CircleAvatar(
-                  radius: 62.5,
-                  backgroundImage: AssetImage(
-                    'images/ttc.png',
-                  ),
+                  radius: 62.5, backgroundColor: kBaseWidgetColor,
+                  // backgroundImage: AssetImage(
+                  //   'images/ttc.png',
+                  // ),
                 ),
               ),
               Padding(
@@ -135,11 +172,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     FollowerFollowingCount(
-                      titleCount: '0k',
+                      titleCount: '0',
                       title: 'Followers',
                     ),
                     FollowerFollowingCount(
-                      titleCount: '0k',
+                      titleCount: '0',
                       title: 'Following',
                     )
                   ],
@@ -163,18 +200,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(105, 39, 104, 0),
-                        child: Wrap(
-                          children: <Widget>[
-                            Text(
-                              'User',
-                              style: TextStyle(
-                                  fontFamily: 'Roboto',
-                                  fontSize: kFontSize18,
-                                  fontWeight: kBoldTxt),
-                            ),
-                          ],
-                        ),
+                        padding: const EdgeInsets.fromLTRB(0, 39, 0, 0),
+                        // child: MyStreamBuilder(
+                        //   fontWeight: kBoldTxt,
+                        //   fontSize: kFontSize18,
+                        //   valueKey: 'fullName',
+                        //   location: 'users',
+                        //   userUid: userUid,
+                        // ),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(60, 12, 60, 0),
@@ -182,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           direction: Axis.horizontal,
                           children: <Widget>[
                             Text(
-                              'An aspiring young black entrepenuer, turning my shoe game into reality.',
+                              'Cupidatat culpa nisi laboris nulla enim deserunt ex occaecat consectetur laborum mollit mollit exercitation.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'Roboto',
@@ -210,10 +243,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           width: 24,
                         ),
                         StoryFrame(),
-                        StoryFrame(),
-                        StoryFrame(),
-                        StoryFrame(),
-                        StoryFrame(),
+                        // StoryFrame(),
+                        // StoryFrame(),
+                        // StoryFrame(),
+                        // StoryFrame(),
                       ],
                     ),
                   ),
@@ -226,7 +259,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Column(
                           children: <Widget>[
                             Text(
-                              '15',
+                              "stripphy",
                               style: TextStyle(
                                 fontFamily: 'Roboto',
                                 fontSize: kFontSize14,
@@ -239,13 +272,33 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ],
                         ),
-                        Image.asset(
-                          'images/tagged_icon.png',
-                          height: kIconImageHeight,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              Navigator.pushNamed(
+                                context,
+                                '/tag',
+                              );
+                            });
+                          },
+                          child: Image.asset(
+                            'images/tagged_icon.png',
+                            height: kIconImageHeight,
+                          ),
                         ),
-                        Image.asset(
-                          'images/bag_icon.png',
-                          height: kIconImageHeight,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              Navigator.pushNamed(
+                                context,
+                                '/store',
+                              );
+                            });
+                          },
+                          child: Image.asset(
+                            'images/bag_icon.png',
+                            height: kIconImageHeight,
+                          ),
                         ),
                         SizedBox(
                           width: 149,
@@ -273,26 +326,88 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                   ),
-
                   // Posts
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                      child: GridView.count(
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12,
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        crossAxisCount: 3,
-                        children: List.generate(
-                          12,
-                          (index) {
-                            return PostBlock();
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
+                  // StreamBuilder(
+                  //   stream: connection
+                  //       // .child('users')
+                  //       // .child(userUid)
+                  //       .child('posts')
+                  //       .child(userUid)
+                  //       .onValue,
+                  //   builder: (context, AsyncSnapshot snapshot) {
+                  //     if (snapshot.data == null) {
+                  //       snapshot.connectionState == ConnectionState.waiting
+                  //           ? LoadingPage()
+                  //           : Container();
+                  //     }
+                  //     final List<Post> postList = [];
+                  //     final Map<dynamic, dynamic> postMap =
+                  //         snapshot.data.snapshot.value;
+                  //     //print(postMap);
+                  //     // postMap.forEach(
+                  //     //   (key, value) {
+                  //     //     print(key);
+                  //     //     print(value);
+
+                  //     //     Post post = Post(
+                  //     //       imageUrl: value['imageUrl'],
+                  //     //       title: value['title'],
+                  //     //       text: value['text'],
+                  //     //     );
+
+                  //     //     postList.add(post);
+                  //     //     print(postList.length);
+                  //     //     print(post);
+                  //     //   },
+                  //     // );
+                  //     print("result before calc");
+                  //     print("result below");
+                  //     print(postList);
+                  //     print("result above");
+                  //     return Expanded(
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+                  //         child: GridView.count(
+                  //           crossAxisCount: 3,
+                  //           crossAxisSpacing: 12,
+                  //           mainAxisSpacing: 11,
+                  //           children: List.generate(
+                  //             postList.length,
+                  //             (index) {
+                  //               print(
+                  //                 postList[index].imageUrl,
+                  //               );
+                  //               return PostCard(
+                  //                 width: 158,
+                  //                 height: 190,
+                  //                 baseColour: kBaseWidgetColor,
+                  //                 image: postList[index].imageUrl,
+                  //               );
+                  //             },
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  // Expanded(
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+                  //     child: GridView.count(
+                  //       crossAxisSpacing: 12,
+                  //       mainAxisSpacing: 12,
+                  //       physics: NeverScrollableScrollPhysics(),
+                  //       shrinkWrap: true,
+                  //       crossAxisCount: 3,
+                  //       children: List.generate(
+                  //         1,
+                  //         (index) {
+                  //           return PostBlock();
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -314,5 +429,4 @@ class _ProfilePageState extends State<ProfilePage> {
 //                     child: ConstrainedBox(
 //                   constraints:
 //                       BoxConstraints(minHeight: viewportConstraints.minHeight),
-//                   child: 
-
+//                   child:

@@ -37,14 +37,22 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      Navigator.pushNamed(context, '/cam');
+                    });
+                  },
                   child: Image.asset(
                     'images/cam_arrow.png',
                     height: kIconImageHeight,
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    setState(() {
+                      Navigator.pushNamed(context, '/shop');
+                    });
+                  },
                   child: Image.asset(
                     'images/shop_arrow.png',
                     height: kIconImageHeight,
@@ -53,41 +61,42 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          StreamBuilder(
-              stream:
-                  FirebaseDatabase.instance.reference().child('posts').onValue,
-              builder: (context, AsyncSnapshot snapshot) {
-                if (snapshot.data == null) {
-                  snapshot.connectionState == ConnectionState.waiting
-                      ? LoadingPage()
-                      : Container();
-                }
-                posts = DataBase().getPost(snapshot: snapshot);
-                return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 11,
-                      children: List.generate(
-                        posts.length,
-                        (index) {
-                          print(
-                            posts[index].imageUrl,
-                          );
-                          return PostCard(
-                            width: 158,
-                            height: 190,
-                            baseColour: kBaseWidgetColor,
-                            image: posts[index].imageUrl,
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                );
-              }),
+          // StreamBuilder(
+          //     stream:
+          //         FirebaseDatabase.instance.reference().child('posts').onValue,
+          //     builder: (context, AsyncSnapshot snapshot) {
+          //       if (snapshot.data == null) {
+          //         snapshot.connectionState == ConnectionState.waiting
+          //             ? LoadingPage()
+          //             : Container();
+          //       }
+          //       posts = DataBase().getPost(snapshot: snapshot);
+          //       // print(posts);
+          //       return Expanded(
+          //         child: Padding(
+          //           padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+          //           child: GridView.count(
+          //             crossAxisCount: 2,
+          //             crossAxisSpacing: 12,
+          //             mainAxisSpacing: 11,
+          //             children: List.generate(
+          //               posts.length,
+          //               (index) {
+          //                 print(
+          //                   posts[index].imageUrl,
+          //                 );
+          //                 return PostCard(
+          //                   width: 158,
+          //                   height: 190,
+          //                   baseColour: kBaseWidgetColor,
+          //                   image: posts[index].imageUrl,
+          //                 );
+          //               },
+          //             ),
+          //           ),
+          //         ),
+          //       );
+          //     }),
         ],
       ),
       bottomNavigationBar: NavBar(),

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:kicks_for_nerds/models/MyAppUser.dart';
 import 'package:kicks_for_nerds/services/database.dart';
 
@@ -14,12 +15,14 @@ class AuthService {
   }
 
   //create Firebase User
-  Future registerFirebaseUser(String email, String password) async {
+  Future registerFirebaseUser(
+      String email, String password, String fullName, String handle) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
-      DataBase(uid: user.uid).updateFlutterArticlesUser(user);
+      await DataBase(uid: user.uid)
+          .updateFlutterArticlesUser(user, fullName, handle);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -49,6 +52,12 @@ class AuthService {
     //   print(e.toString());
     //   return null;
     // }
+  }
+
+  //TODO here
+  Future<String> currentUser() async {
+    final User user = await FirebaseAuth.instance.currentUser;
+    return user.uid.toString();
   }
 
   Stream<MyAppUser> get user =>
