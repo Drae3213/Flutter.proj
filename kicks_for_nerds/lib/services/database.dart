@@ -56,7 +56,7 @@ class DataBase {
 
     String storyId = Uuid().v1();
     final storyReference = connection.child('stories').child(storyId);
-    storyReference.set({
+    storyReference.update({
       'userId': user,
       'imageUrl': imageUrl,
     });
@@ -88,7 +88,7 @@ class DataBase {
 
     String postId = Uuid().v1();
     final postReference = connection.child('posts').child(postId);
-    postReference.set({
+    postReference.update({
       'userId': user,
       'title': title,
       'text': text,
@@ -145,21 +145,17 @@ class DataBase {
   Future<void> setHandle(String handle) async {
     String user = await AuthService().currentUser();
     //TODO changed handles to handle
-    final handleRef =
-        connection.child('users').child(user).child('handle').child(user);
-    handleRef.set({
-      'handle': "@$handle",
-      'uid': user,
+    final handleRef = connection.child('users').child(user);
+    handleRef.update({
+      'handle': "$handle",
     });
   }
 
   Future<void> setUserName(String name) async {
     String user = await AuthService().currentUser();
-    final handleRef =
-        connection.child('users').child(user).child('fullName').child(user);
-    handleRef.set({
+    final handleRef = connection.child('users').child(user);
+    handleRef.update({
       'fullName': name,
-      'uid': user,
     });
   }
 }
