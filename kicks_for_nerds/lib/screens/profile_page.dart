@@ -128,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         snapshot.data.snapshot.value;
 
                                     return Text(
-                                      userMap['fullname'],
+                                      "@${userMap['handle']}",
                                       style: TextStyle(color: Colors.white),
                                     );
                                   },
@@ -231,6 +231,25 @@ class _ProfilePageState extends State<ProfilePage> {
                         //   location: 'users',
                         //   userUid: userUid,
                         // ),
+                        child: StreamBuilder(
+                          stream:
+                              connection.child('users').child(userUid).onValue,
+                          builder: (context, AsyncSnapshot snapshot) {
+                            if (snapshot.hasData) {
+                              snapshot.connectionState ==
+                                      ConnectionState.waiting
+                                  ? LoadingPage()
+                                  : Text("data not here");
+                            }
+                            final Map<dynamic, dynamic> userMap =
+                                snapshot.data.snapshot.value;
+
+                            return Text(
+                              "${userMap['fullname']}",
+                              style: TextStyle(color: Colors.black),
+                            );
+                          },
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(60, 12, 60, 0),
