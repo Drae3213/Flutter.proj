@@ -8,6 +8,7 @@ import 'package:kicks_for_nerds/assets/constants.dart';
 import 'package:kicks_for_nerds/components/custom_back_button.dart';
 import 'package:kicks_for_nerds/components/reusable_buttons.dart';
 import 'package:kicks_for_nerds/services/auth.dart';
+import 'package:kicks_for_nerds/services/database.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   File sampleImage;
 
-  String _myValue;
+  // String _myValue;
 
   String url;
 
@@ -74,6 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
       var imageUrl = await imageRef.getDownloadURL();
       url = imageUrl.toString();
+
 
       print("ImageUrl = " + url);
 
@@ -136,9 +138,29 @@ class _SettingsPageState extends State<SettingsPage> {
                       top: 12.0,
                     ),
                     child: BiggerButton(
-                      title: 'Profile Pic',
+                      title: 'Bio',
                       onPressed: () {
+                        setState(() {
+                          Navigator.pushNamed(
+                            context,
+                            '/bio',
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 12.0,
+                    ),
+                    child: BiggerButton(
+                      title: 'Profile Pic',
+                      onPressed: () async {
                         getImageGallery();
+                        // await uploadStatusImage();
+                        // await DataBase().saveProfilePic(
+                        //   imageUrl: url,
+                        // );
                       },
                     ),
                   ),
@@ -148,7 +170,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     child: BiggerButton(
                       title: 'Banner',
-                      onPressed: () {
+                      onPressed: () async {
                         getImageGallery();
                       },
                     ),

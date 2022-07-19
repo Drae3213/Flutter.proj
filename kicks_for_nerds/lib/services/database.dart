@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +50,7 @@ class DataBase {
   }
 
   // story saving function
-  Future<void> saveStory(imageUrl) async {
+  Future<void> saveStory({String imageUrl}) async {
     String user = await AuthService().currentUser();
 
     print("SAVINGGG STORY");
@@ -74,7 +76,7 @@ class DataBase {
     print(user);
 
     storyMap.forEach((key, value) {
-      storyList.add(Stories(
+      storyList.add(Story(
         imageUrl: value['imageUrl'],
         userId: value['userId'],
       ));
@@ -144,6 +146,15 @@ class DataBase {
     return postLength;
   }
 
+  Future<void> setBio(String bio) async {
+    String user = await AuthService().currentUser();
+    //TODO changed bio
+    final bioRef = connection.child('users').child(user);
+    bioRef.update({
+      'bio': "$bio",
+    });
+  }
+
   Future<void> setHandle(String handle) async {
     String user = await AuthService().currentUser();
     //TODO changed handles to handle
@@ -155,13 +166,58 @@ class DataBase {
 
   Future<void> setUserName(String name) async {
     String user = await AuthService().currentUser();
-    final handleRef = connection.child('users').child(user);
-    handleRef.update(
+    final nameRef = connection.child('users').child(user);
+    nameRef.update(
       {
-        'fullName': name,
+        'fullName': "$name",
+      },
+    );
+
+    Future<void> setProfilePic({String imageUrl}) async {
+      String user = await AuthService().currentUser();
+
+      print("SAVINGGG Profile");
+      print(user);
+
+      final profileRef = connection.child('users').child(user);
+      profileRef.update({
+        'profile_pic': imageUrl,
+      });
+    }
+  }
+
+  Future<void> saveProfilePic({imageUrl}) async {
+    String user = await AuthService().currentUser();
+
+    print("SAVINGGG PROFILE");
+    print(user);
+
+    // String postId = Uuid().v1();
+
+    final profileRef = connection.child('users').child(user);
+    profileRef.set(
+      {
+        'profile_pic': imageUrl,
       },
     );
   }
-}
 
+  Future<void> updateStoryDisplay({imageUrl}) async {
+    print("UPDATING DISPLAY");
+
+    final displayRef = connection.child('display').child('stories');
+    displayRef.update({
+      'imageUrl': imageUrl,
+    });
+  }
+
+  Future<void> updatePostDisplay({imageUrl}) async {
+    print("UPDATING DISPLAY");
+
+    final displayRef = connection.child('display').child('post');
+    displayRef.update({
+      'imageUrl': imageUrl,
+    });
+  }
+}
 // class DataService {}

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kicks_for_nerds/assets/constants.dart';
 import 'package:kicks_for_nerds/assets/variables.dart';
+import 'package:kicks_for_nerds/components/custom_back_button.dart';
 import 'package:kicks_for_nerds/components/nav_bar.dart';
 import 'package:kicks_for_nerds/components/reusable_buttons.dart';
 import 'package:kicks_for_nerds/components/reusable_card.dart';
@@ -17,14 +18,14 @@ import 'package:intl/intl.dart';
 import 'package:kicks_for_nerds/screens/home_page.dart';
 import 'package:kicks_for_nerds/services/database.dart';
 
-class UploadPage extends StatefulWidget {
-  const UploadPage({Key key}) : super(key: key);
+class StoriesUploadPage extends StatefulWidget {
+  const StoriesUploadPage({Key key}) : super(key: key);
 
   @override
-  _UploadPageState createState() => _UploadPageState();
+  State<StoriesUploadPage> createState() => _StoriesUploadState();
 }
 
-class _UploadPageState extends State<UploadPage> {
+class _StoriesUploadState extends State<StoriesUploadPage> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
   var _profileImage;
 
@@ -68,11 +69,11 @@ class _UploadPageState extends State<UploadPage> {
 
   Future<void> uploadStatusImage() async {
     if (true) {
-      print('getting here');
+      print('getting there');
       final postImageRef = FirebaseStorage.instance.ref().child("Post Images");
 
       var timeKey = new DateTime.now();
-      print('getting here 2');
+      print('getting there 2');
 
       final imageRef = postImageRef.child(timeKey.toString() + ".jpg");
 
@@ -89,37 +90,6 @@ class _UploadPageState extends State<UploadPage> {
     }
   }
 
-  // void saveToDatabase(url) {
-  //   var dbTimeKey = new DateTime.now();
-  //   var formatDate = new DateFormat('MMM d, yyyy');
-  //   var formtTime = new DateFormat('EEEE, hh:mm aaa');
-
-  //   String date = formatDate.format(dbTimeKey);
-  //   String time = formtTime.format(dbTimeKey);
-
-  //   DatabaseReference ref = FirebaseDatabase.instance.reference();
-
-  //   var data = {
-  //     "image": url,
-  //     "description": _myValue,
-  //     "date": date,
-  //     "time": time,
-  //   };
-
-  //   ref.child("Posts").push().set(data);
-  // }
-
-  // void goToHomePage() {
-  //   Navigator.pushNamed(
-  //     context,
-  //     '/home',
-  //   );
-  // }
-
-  String title = '';
-
-  String text = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,13 +100,14 @@ class _UploadPageState extends State<UploadPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            CustomBackButton(),
             Padding(
               padding: const EdgeInsets.fromLTRB(24, 36, 0, 36),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Posts',
+                    'Stories',
                     style: TextStyle(
                       fontFamily: 'Comfortaa',
                       fontSize: 36,
@@ -148,36 +119,38 @@ class _UploadPageState extends State<UploadPage> {
             ),
             Column(
               children: <Widget>[
-                ReusableCard(
-                  marginSize: kContentMargin,
-                  width: double.infinity,
+                Container(
                   height: 200,
-                  baseColour: kBaseWidgetColor,
-                  cardChild: _profileImage == null
+                  child: _profileImage == null
                       ? Center(
-                          child: Text("Image not loaded"),
+                          child: Text(
+                            "Image not loaded",
+                          ),
                         )
                       : Image.file(
                           _profileImage,
-                          fit: BoxFit.fill,
                         ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: kBaseWidgetColor,
+
+                    // borderRadius: BorderRadius.circular(
+                    //   100,
+                    // ),
+                  ),
                 ),
-                StrokeButtonField(
-                  hiddenPass: false,
-                  onChangedProperty: (val) {
-                    title = val.toString();
-                    // print(text);
-                  },
-                  txt: 'Title',
-                ),
-                StrokeButtonField(
-                  hiddenPass: false,
-                  onChangedProperty: (val) {
-                    text = val.toString();
-                    // print(text);
-                  },
-                  txt: 'Text',
-                ),
+
+                // ClipContext()()(
+                //     child: Container(
+                //       height: 100,
+                //       width: 100,
+                //       child: Image.file(
+                //         _profileImage,
+                //         fit: BoxFit.contain,
+                //       ),
+                //     ),
+                //   ),
+
                 Padding(
                   padding: const EdgeInsets.only(
                     top: 12,
@@ -197,9 +170,7 @@ class _UploadPageState extends State<UploadPage> {
                   child: BiggerButton(
                     onPressed: () async {
                       await uploadStatusImage();
-                      await DataBase().savePost(
-                        title: title,
-                        text: text,
+                      await DataBase().saveStory(
                         imageUrl: url,
                       );
                     },
